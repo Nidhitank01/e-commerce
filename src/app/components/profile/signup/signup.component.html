@@ -1,0 +1,122 @@
+
+<!-- Section: Design Block -->
+<section class="text-center">
+    <!-- Background image -->
+    <div class="p-5 bg-image" style="
+          background-color:  #3b5d50;
+          height: 10rem;
+          "></div>
+    <!-- Background image -->
+    
+    <div class="card mx-4 mx-md-5 shadow-5-strong" style="
+          margin-top: -100px;
+          background: hsla(0, 0%, 100%, 0.8);
+          backdrop-filter: blur(30px);" >
+      <div class="card-body py-5 px-md-5">
+          
+          <div class="row d-flex justify-content-center">
+              <div class="col-lg-8">
+                  <h2 class="fw-bold mb-5">Sign up</h2>
+                  <form [formGroup]="user" (ngSubmit)="onSign()">
+                      <!-- 2 column grid layout with text inputs for the first and last names -->
+                      
+                          <div class="form-outlin mb-4" >
+                            <input type="text" 
+                            class="form-control" placeholder="Enter full name"
+                            formControlName="name"/>
+                          </div>
+                        <!-- Email input -->
+                        <div class="form-outline mb-4">
+                            <input type="email"
+                             class="form-control"  placeholder="Email address"
+                             formControlName="email"/>
+                        </div>
+                  
+                      <!-- Password input -->
+                      <div class="form-outline mb-4">
+                        <input type="password" 
+                        class="form-control" placeholder="Password"
+                        formControlName="password" />
+                      </div>
+                      <!-- phone input -->
+                        <div class="form-outline mb-4">
+                            <input type="tel" name="" 
+                             class="form-control" placeholder="Phone no."
+                             formControlName="phone_no">
+                        </div>
+                      <!-- Address input -->
+                      <div class="row">
+                  
+                          <div class="form-outline mb-4 col">
+                             <textarea name="" cols="100" rows="3" 
+                             class="form-control" placeholder="Address"
+                             formControlName="address"></textarea>
+                          </div>
+                          <div class="col">
+                              <div class="row">
+                                 <div class="col">
+                                    <select class="form-select" aria-label="Default select example" formControlName="state">
+                                        <option selected>Select State</option>
+                                        <option value="Gujarat">Gujarat</option>
+                                        <option value="Maharastra">Maharastra</option>
+                                        <option value="Dehli">Dehli</option>
+                                      </select>
+                                 </div>
+                                 <div class="col">
+                                    <select class="form-select"
+                                    *ngIf="user.get('state').value==='Gujarat'"
+                                     aria-label="Default select example" 
+                                     formControlName="city">
+                                        <option selected>Select City</option>
+                                        <option value="1">Surat</option>
+                                        <option value="2">Ahmedabad</option>
+                                        <option value="3">Baroda</option>
+                                      </select>
+                                      <select 
+                                      *ngIf="user.get('state').value==='Maharastra'"
+                                      class="form-select" aria-label="Default select example" 
+                                      formControlName="city">
+                                        <option selected>Select City</option>
+                                        <option value="1">Pune</option>
+                                        <option value="2">Mumbai</option>
+                                        <option value="3">Dadar</option>
+                                      </select>
+                                      <select 
+                                      *ngIf="user.get('state').value==='Dehli'"
+                                      class="form-select" aria-label="Default select example" 
+                                      formControlName="city">
+                                        <option selected>Select City</option>
+                                        <option value="1">New Delhi</option>
+                                        <option value="2">Firozabad</option>
+                                        <option value="3">Shergarh</option>
+                                      </select>
+                                 </div>
+                              </div>
+                              <div class="row mt-2">
+                                  <div class="col">
+                                     <input type="tel" name="" max="6"  placeholder="Enter pincode" class="form-control" formControlName="pincode">
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
+                      <!-- Submit button -->
+                      <button type="submit" class="btn btn-primary btn-block mb-4 w-100">
+                        Sign up
+                      </button>
+                     <div class="d-flex justify-content-center">
+                        <div>
+                            <label for="login">If you already have an account ?</label>
+                        </div>
+                        <div>
+                            <a routerLink="login" (click)="onclick()">login here</a>
+                        </div>
+                     </div>
+                      <!-- Register buttons -->
+                      
+                    </form>
+          </div> 
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- Section: Design Block -->
