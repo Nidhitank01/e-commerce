@@ -11,8 +11,8 @@
             <!-- End Column 1 -->
             <!-- Start Column 2 -->
             <div class="col-12 col-md-4 col-lg-3 mb-5 mb-md-0"
-             *ngFor="let product of products ">
-                <a class="product-item" routerLink="cart">
+             *ngFor="let product of products">
+                <a class="product-item" (click)="addToCart(product)">
                     <img [src]="product.itemImg" class="img-fluid product-thumbnail">
                     <h3 class="product-title">{{ product.itemName }}</h3>
                     <strong class="product-price">${{ product.itemPrice+".00" }}</strong>

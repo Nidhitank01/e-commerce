@@ -1,8 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { UserService } from './Services/user.service';
 import { user } from './Models/user.model';
 import { Subscription } from 'rxjs';
 import { Router } from '@angular/router';
+import { item } from './Models/item.model';
 
 @Component({
   selector: 'app-root',
@@ -11,14 +12,20 @@ import { Router } from '@angular/router';
 })
 export class AppComponent implements OnInit{
   title = 'Brain';
-  loggedInUser:user
+  @Input()loggedInUser:user
   login:Subscription
+  cartSub:Subscription
+  cartItemCount:number=0
+  public token:user
   constructor(private userService:UserService,private router:Router){}
   ngOnInit(){
-   this.login=this.userService.loginUser.subscribe((res:user)=>{
-      this.loggedInUser=res
-      console.log(this.loggedInUser)
-    })
+   this.token=JSON.parse(sessionStorage.getItem('token'))
+   if(this.token){
+      this.loggedInUser=this.token
+   }
+   this.cartSub=this.userService.itemAddedInCart.subscribe(()=>{
+    this.cartItemCount++
+   })
   }
   logout(){
     this.login.unsubscribe()
@@ -26,5 +33,9 @@ export class AppComponent implements OnInit{
     alert('logout')
     this.router.navigate([''])
     
+  }
+  oncart(){
+    this.cartItemCount=0
+    this.router.navigate(['cart'])
   }
 }

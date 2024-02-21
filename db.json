@@ -39,8 +39,49 @@
       "city": "1",
       "state": "Gujarat",
       "pincode": "394101",
-      "cart": [],
+      "cart": [
+        {
+          "id": 2,
+          "itemId": 2,
+          "itemName": "Kruzo Aero Chair",
+          "itemImg": "assets/Images/images/product-2.png",
+          "itemPrice": 78,
+          "itemQuantity": null,
+          "availQuatity": 6
+        },
+        {
+          "id": 3,
+          "itemId": 3,
+          "itemName": "Ergonomic Chair",
+          "itemImg": "assets/Images/images/product-3.png",
+          "itemPrice": 43,
+          "itemQuantity": null,
+          "availQuatity": 2
+        },
+        {
+          "id": 1,
+          "itemId": 1,
+          "itemName": "Nordic Chair",
+          "itemImg": "assets/Images/images/product-1.png",
+          "itemPrice": 50,
+          "itemQuantity": null,
+          "availQuatity": 10
+        }
+      ],
       "id": 1
+    },
+    {
+      "UserId": "59",
+      "name": "Nidhi Tank",
+      "email": "nidhitank@1901gmail.com",
+      "password": "Nidhi@1901",
+      "phone_no": "7574024754",
+      "address": "11 sagar row house , motavarachha",
+      "city": "1",
+      "state": "Gujarat",
+      "pincode": "394101",
+      "cart": [],
+      "id": 2
     }
   ]
 }

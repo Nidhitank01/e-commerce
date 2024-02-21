@@ -5,4 +5,5 @@ export class item{
     itemPrice:number=null
     itemQuantity:number=null
     availQuatity:number=null
+    total:number=this.itemPrice
 }

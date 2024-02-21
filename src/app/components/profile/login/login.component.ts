@@ -28,17 +28,21 @@ export class LoginComponent implements OnInit{
     if(this.user.valid){
       console.log(this.user.value)
       this.userService.getUserList().subscribe((res:user[])=>{
-        res.map((u)=>{
-          if(u.email===this.user.value.email || u.password===this.user.value.password){
-            alert('login successful')
-            sessionStorage.setItem('token',JSON.stringify(u))
-            this.userService.loginUser.next(u)
-            this.router.navigate([''])
-          }
-          else{
-            alert('email or password must be wrong')
-          }
-        })
+        
+        if(res){
+          res.map((u)=>{
+            if(u.email===this.user.value.email || u.password===this.user.value.password){
+              alert('login successful')
+              sessionStorage.setItem('token',JSON.stringify(u))
+              this.userService.loginUser.next(u)
+              this.router.navigate([''])
+            }
+          })
+        }
+        else{
+          alert('user not found')
+        }
+
       })
 
     }

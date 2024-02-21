@@ -1,7 +1,9 @@
 import { HttpClient } from '@angular/common/http';
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { item } from 'src/app/Models/item.model';
+import { user } from 'src/app/Models/user.model';
 import { ProductService } from 'src/app/Services/product.service';
+import { UserService } from 'src/app/Services/user.service';
 
 @Component({
   selector: 'app-product',
@@ -10,14 +12,28 @@ import { ProductService } from 'src/app/Services/product.service';
 })
 export class ProductComponent implements OnInit {
  products:item[]=[]
- constructor(private productService:ProductService,private http:HttpClient){
+ @Input()LogedUser:user
+ constructor(private productService:ProductService,private http:HttpClient,private userService:UserService){
  }
  ngOnInit(){
   this.productService.getAllItem().subscribe((res:item[])=>{
     this.products=res
+    console.log(this.products);
+    
+  }) 
+  
+  this.userService.getUser(JSON.parse(sessionStorage.getItem('token'))).subscribe((res:user)=>{
+    console.log("from server",res);
+    this.LogedUser=res
   })
-   
+    // console.log("cart:",this.LogedUser); 
+}
 
-   
- }
+    addToCart(product:item){
+       this.userService.addToCart(product,this.LogedUser).subscribe((res:user)=>{
+        console.log("in product compoenent",res.cart);
+        
+        //  this.userService.itemAddedInCart.next(res.cart)
+       })
+    }
 }
